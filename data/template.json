@@ -1,0 +1,31 @@
+{
+    "name": "Workflow name",
+    "tactic": "MITRE tactic",
+    "technique": "Description of the MITRE techniques, accepts html code see example below",
+    "description": "Description of the workflow, accepts html code see example below",
+    "l1Instructions": [
+        {
+            "taskName": "Data gathering",
+            "tasks": "Tasks, it accepts html code (remember to put the html in one line), see example below"
+        },
+        {
+            "taskName": "Resolution",
+            "tasks": "<ol><li>Search for the TRAP Id in the Siem.</li><li>Get the Url of threatinsight.proofpoint... from the log.</li><li>Enter Url in Citrix browser to access the information.</li><li>Collect the following data:</li><ul><li>Description of the alert</li><li>Sender</li><li>How many recipients</li><li>Are there VIPs?</li><li>How many have been blocked/quarantined?</li><li>IP Sender</li></ul><li>Summary of the case</li><li>Add observables and TAGs to the Incident before finishing this step.</li></ol>"
+        }
+    ],
+    "l2Instructions": [
+        {
+            "taskName": "Remediation",
+            "tasks": "Tasks, it accepts html code (remember to put the html in one line), see example below"
+        },
+        {
+            "taskName": "Scan for malware",
+            "tasks": "<ol><li>Search for the TRAP Id in the Siem.</li><li>Get the Url of threatinsight.proofpoint... from the log.</li><li>Enter Url in Citrix browser to access the information.</li><li>Collect the following data:</li><ul><li>Description of the alert</li><li>Sender</li><li>How many recipients</li><li>Are there VIPs?</li><li>How many have been blocked/quarantined?</li><li>IP Sender</li></ul><li>Summary of the case</li><li>Add observables and TAGs to the Incident before finishing this step.</li></ol>"
+        }
+    ],
+    "falsePositiveDefinition": "False positive definition, also accepts html code",
+    "links": [
+        "https://example.com/phishing",
+        "https://example.com/spear-phishing"
+    ]
+}
