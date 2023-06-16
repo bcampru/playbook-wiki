@@ -1,37 +1,19 @@
-FROM node:18-alpine AS deps
-RUN apk add --no-cache libc6-compat
+# Build Stage
+FROM node:16-alpine AS BUILD_IMAGE
 WORKDIR /app
-
-COPY package.json package-lock.json ./
-RUN  npm install --production
-
-FROM node:18-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+COPY package*.json ./
+RUN npm ci
 COPY . .
-
-ENV NEXT_TELEMETRY_DISABLED 1
-
 RUN npm run build
 
-FROM node:18-alpine AS runner
+
+# Production Stage
+FROM node:16-alpine AS PRODUCTION_STAGE
 WORKDIR /app
-
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
-USER nextjs
-
+COPY --from=BUILD_IMAGE /app/package*.json ./
+COPY --from=BUILD_IMAGE /app/.next ./.next
+COPY --from=BUILD_IMAGE /app/public ./public
+COPY --from=BUILD_IMAGE /app/node_modules ./node_modules
+ENV NODE_ENV=production
 EXPOSE 3000
-
-ENV PORT 3000
-
 CMD ["npm", "start"]
-
