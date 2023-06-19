@@ -54,10 +54,12 @@ export default function Workflow({ data }) {
 					<Accordion defaultActiveKey="0" flush>
 						<Accordion.Item eventKey="0">
 							<Accordion.Header>
-								<b>False Positive Definition</b>
+								<b>L1 Instructions</b>
 							</Accordion.Header>
+
 							<Accordion.Body>
-								{htmlDecode(data.falsePositiveDefinition)}
+								{data.l1Instructions &&
+									parseTasks(data.l1Instructions)}
 							</Accordion.Body>
 						</Accordion.Item>
 					</Accordion>
@@ -85,18 +87,6 @@ export default function Workflow({ data }) {
 			<Accordion defaultActiveKey="0" flush>
 				<Row>
 					<Col>
-						<Accordion.Item eventKey="0">
-							<Accordion.Header>
-								<b>L1 Instructions</b>
-							</Accordion.Header>
-
-							<Accordion.Body>
-								{data.l1Instructions &&
-									parseTasks(data.l1Instructions)}
-							</Accordion.Body>
-						</Accordion.Item>
-					</Col>
-					<Col>
 						<Accordion.Item eventKey="1">
 							<Accordion.Header>
 								<b>L2 Instructions</b>
@@ -104,6 +94,16 @@ export default function Workflow({ data }) {
 							<Accordion.Body>
 								{data.l2Instructions &&
 									parseTasks(data.l2Instructions)}
+							</Accordion.Body>
+						</Accordion.Item>
+					</Col>
+					<Col>
+						<Accordion.Item eventKey="0">
+							<Accordion.Header>
+								<b>False Positive Definition</b>
+							</Accordion.Header>
+							<Accordion.Body>
+								{htmlDecode(data.falsePositiveDefinition)}
 							</Accordion.Body>
 						</Accordion.Item>
 					</Col>
