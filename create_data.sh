@@ -1,6 +1,6 @@
 #!/bin/bash
 
-array=("Clariant" "ECCBC" "Ilunion" "Nippon" "Roche" "Septodon" "Swisscard" "Vaillant" "YWS")
+array=("Clariant" "ECCBC" "Ilunion" "Nippon" "Roche" "Septodont" "Swisscard" "Vaillant" "YWS")
 
 for i in "${array[@]}"
 do

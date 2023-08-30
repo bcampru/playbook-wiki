@@ -27,7 +27,6 @@ export default function App({ params: { client, workflow } }) {
 			<Row className="align-items-end">
 				<Col>
 					<h1 style={{ marginBottom: "0rem" }}>
-						Workflow:{" "}
 						{decodeURI(client) + " - " + workflowData.name}
 					</h1>
 				</Col>
